@@ -23,28 +23,25 @@ const BottomTabNav = () => {
 
   return (
     <Tab.Navigator
-      screenOptions={{
-        headerShown: false,
-        tabBarShowLabel: false,
-        tabBarStyle: {
-          // flexGrow:1,
-          backgroundColor: theme?.colors.bg_color_onBoard,
-          height: 65, // Fixed height for the tab bar
-          // paddingTop: 10, // Adjust the top padding as needed
-          borderTopWidth: 0,
-          paddingHorizontal: 5,
-          alinItem: 'center',
-          // marginHorizontal:20,
-          // paddingVertical:10,
-          justifyContent: 'space-between',
-          alignContent: 'space-between'
-
-
-        },
-
-      }}
+    screenOptions={{
+      headerShown: false,
+      tabBarShowLabel: false,
+      tabBarStyle: {
+        backgroundColor: theme?.colors.bg_color_onBoard,
+        height: 60,
+        paddingTop: 15,
+        paddingBottom: 18,
+        paddingLeft:5,
+        // paddingRight:5
+        // borderTopWidth: 0,
+      },
+      tabBarItemStyle: {},
+    }}
     // initialRouteName="Home"
-    >
+    style={{
+      flex: 1,
+      alignItems: 'center',
+    }}>
       <Tab.Screen
         name="Home"
         component={Home}
@@ -54,11 +51,14 @@ const BottomTabNav = () => {
             <View
               style={{
                 alignItems: 'center',
+                marginLeft: 5
+
+                // flexGrow: 1,
                 // marginLeft: 5
 
               }}>
               <MaterialCommunityIcons
-                name={'view-dashboard-outline'} size={20}
+                name={'view-dashboard-outline'} size={25}
                 color={
                   focused ? theme?.colors.colorPrimary : theme?.colors.grey
                 } />
@@ -71,7 +71,7 @@ const BottomTabNav = () => {
                       ? theme?.colors.colorPrimary
                       : theme?.colors.textColor,
                     // fontFamily:FONTS?.bold
-                    marginTop: 5
+                    // marginTop: 5
                   },
                 ]}>
                 Dashboard
@@ -90,6 +90,8 @@ const BottomTabNav = () => {
               style={{
                 alignItems: 'center',
                 marginLeft: 5
+
+                // flexGrow: 1,                // marginLeft: 5
 
               }}>
               <MaterialCommunityIcons
@@ -127,6 +129,8 @@ const BottomTabNav = () => {
               style={{
                 alignItems: 'center',
                 marginLeft: 5
+
+                // flexGrow: 1,
               }}>
               {/* <FontAwesome name={'dollar'} size={20} color={theme?.colors?.grey} /> */}
               <Feather
@@ -162,7 +166,10 @@ const BottomTabNav = () => {
             <View
               style={{
                 alignItems: 'center',
-                marginLeft: 10
+                marginLeft: 5
+
+                // flexGrow: 1,
+                // marginLeft: 10
 
               }}>
               <Ionicons
@@ -190,25 +197,21 @@ const BottomTabNav = () => {
           ),
         }}
       />
-      <Tab.Screen
+
+      {/* <Tab.Screen
         name="Profile"
         component={Profile}
         options={{
           unmountOnBlur: true,
-          tabBarIcon: ({ focused }) => (
+          tabBarIcon: ({focused}) => (
             <View
               style={{
                 alignItems: 'center',
-                // paddingRight: 5,
-                // paddingTop: 3
-                marginEnd: 3
-
-
               }}>
-              <Feather
+              <AntDesign
                 name="user"
                 // name={focused ? 'heart' : 'hearto'}
-                size={25}
+                size={22}
                 color={
                   focused ? theme?.colors.colorPrimary : theme?.colors.grey
                 }
@@ -220,12 +223,50 @@ const BottomTabNav = () => {
                     color: focused
                       ? theme?.colors.colorPrimary
                       : theme?.colors.textColor,
-                    // paddingTop: 0
                   },
                 ]}>
                 Profile
               </Text>
+            </View>
+          ),
+        }}
+      /> */}
+      <Tab.Screen
+        name="Profile"
+        component={Profile}
+        options={{
+          unmountOnBlur: true,
+          tabBarIcon: ({ focused }) => (
+            <View
+              style={{
+                alignItems: 'center',
 
+                // flexGrow: 1,
+                // marginLeft: 5
+                marginEnd:10
+
+              }}>
+              <AntDesign
+                // name={focused ? 'wallet' : 'wallet-outline'}
+                name="user"
+                size={25}
+                color={
+                  focused ? theme?.colors.colorPrimary : theme?.colors.grey
+                }
+
+              />
+              <Text
+                numberOfLines={1}
+                style={[
+                  styles.text,
+                  {
+                    color: focused
+                      ? theme?.colors.colorPrimary
+                      : theme?.colors.textColor,
+                  },
+                ]}>
+                Profile
+              </Text>
             </View>
           ),
         }}
@@ -237,8 +278,8 @@ export default BottomTabNav;
 
 const styles = StyleSheet.create({
   text: {
-    fontSize: 12,
-    marginTop: 2,
-    fontFamily: FONTS?.regular
+    fontSize: 11,
+    marginTop: 3,
+    fontFamily: FONTS?.regular,
   },
 });

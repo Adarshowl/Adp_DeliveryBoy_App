@@ -331,7 +331,7 @@ const ReturnOrderList = ({
                                             // marginTop: 3
                                         },
                                     ]}>
-                                    {item?.orderId?.payment_status}
+                                    {item?.orderId?.payment_mode == "Cod" ? "COD" : item?.orderId?.payment_mode}
                                 </Text>
                                 <View style={{
                                     backgroundColor: COLORS?.green,

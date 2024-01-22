@@ -519,7 +519,12 @@ const Order = ({ navigation, route }) => {
 
               }}>
                 <Text style={styles?.ordertext}>Payment Method</Text>
-                <Text style={styles?.normaltext}>{dashboard?.orderId?.payment_mode}</Text>
+
+                <Text style={styles?.normaltext}>
+                {dashboard?.orderId?.payment_mode =="Cod" ? "COD" : dashboard?.orderId?.payment_mode}
+
+                  {/* {dashboard?.orderId?.payment_mode} */}
+                  </Text>
               </View>
             </View>
 

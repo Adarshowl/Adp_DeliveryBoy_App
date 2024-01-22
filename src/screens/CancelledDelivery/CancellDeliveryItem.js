@@ -39,7 +39,7 @@ const CancellDeliveryItem = ({
   const time = dateObj.toTimeString().split(' ')[0];
   const formattedDateTime = `${date} ${time}`;
 
-  console.log('item',item)
+  console.log('item', item)
 
   return (
     <View style={{
@@ -160,7 +160,7 @@ const CancellDeliveryItem = ({
                     marginTop: 2
                   },
                 ]}>
-                {item?.orderId?.payment_status}
+                {item?.orderId?.payment_mode == "Cod" ? "COD" : item?.orderId?.payment_mode}
               </Text>
 
             </View>

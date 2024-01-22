@@ -226,7 +226,7 @@ const Profile = ({ navigation }) => {
       setShowCameraModal(false);
     });
   };
-  
+
   const [loading, setLoading] = useState(false)
 
   const dispatch = useDispatch()
@@ -306,9 +306,88 @@ const Profile = ({ navigation }) => {
       ShowConsoleLogMessage('Image picker error => ' + JSON.stringify(error));
     }
   };
-
-
   const uploadPhotos = async () => {
+    setLoading(true);
+
+
+    try {
+
+      const body = {
+        name: name,
+        phone: phone,
+        address: address,
+        image: image
+      };
+
+      // Make sure API_END_POINTS.UPDATE_PROFILE is correctly defined
+      ShowConsoleLogMessage(API_END_POINTS.PROFILE_UPDATE);
+      console.log("body", body);
+
+      try {
+        const response = await ApiCall('post', body, API_END_POINTS.PROFILE_UPDATE, {
+          'Content-Type': 'application/json',
+          'x-access-token': userToken || userData?.remember_token,
+        });
+
+        ShowConsoleLogMessage("update profile response -> " + JSON.stringify(response));
+
+        if (response.data && response.data.status === true) {
+          await AsyncStorage.setItem('userData', JSON.stringify(response?.data));
+
+          ShowToastMessage(response?.data?.success);
+
+          const updatedData = response?.data?.data;
+          setUserName(updatedData?.name);
+          setPhone(updatedData?.phone);
+          setAddress(updatedData?.address);
+          setImage(updatedData?.image);
+
+          dispatch(fetchUserData(updatedData));
+          navigation.goBack('MainContainer');
+          // getUserProfile();
+          // setUserName(updatedData?.name);
+          // setAddress(updatedData?.address);
+          // setPhoneNo(updatedData?.seller_phone);
+          // setImage(updatedData?.image);
+          // dispatch(fetchUserData(response?.data));
+
+          // ShowToastMessage(response?.data?.message);
+
+          // navigation.goBack('Profile');
+          ShowToastMessage('Profile Updated successful')
+
+
+          getUserProfile();
+        } else {
+          // ShowToastMessage(response?.data?.message);
+          if (response.data?.message === "Token Mismatch") {
+            Alert.alert(
+              'Session Expired',
+              'Your session has expired due to a security issue. Please log in again to continue using the application.',
+              [
+                {
+                  text: 'OK',
+                  onPress: () => {
+                    clearUserToken();
+                  },
+                },
+              ]
+            );
+          }
+        }
+      } catch (error) {
+        console.error('Error making API call:', error);
+        // ShowToastMessage('An error occurred during profile update.');
+      }
+    } catch (error) {
+      ShowToastMessage(`An error occurred: ${error.message}`);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+
+  const uploadPhotos11 = async () => {
     setLoading(true);
     const params = new FormData();
     params.append('name', name);

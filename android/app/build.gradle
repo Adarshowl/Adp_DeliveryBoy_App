@@ -93,9 +93,9 @@ android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
-    namespace "com.e_ccom_delivery_test"
+    namespace "com.adp_e_ccom_delivery_test"
     defaultConfig {
-        applicationId "com.e_ccom_delivery_test"
+        applicationId "com.adp_e_ccom_delivery_test"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
@@ -171,3 +171,11 @@ dependencies {
 
 apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)
 apply from: file("../../node_modules/react-native-vector-icons/fonts.gradle")
+/**
+ *
+
+
+
+
+ */
+

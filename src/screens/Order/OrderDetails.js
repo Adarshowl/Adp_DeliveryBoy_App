@@ -415,7 +415,11 @@ const OrderDetails = ({ navigation, route }) => {
 
               }}>
                 <Text style={styles?.ordertext}>Payment Method</Text>
-                <Text style={styles?.normaltext}>{dashboard?.orderId?.payment_mode}</Text>
+                <Text style={styles?.normaltext}>
+                {dashboard?.orderId?.payment_mode ==="Cod" ? "COD" : dashboard?.orderId?.payment_mode}
+
+                  {/* {dashboard?.orderId?.payment_mode} */}
+                  </Text>
               </View>
             </View>
 
@@ -423,7 +427,9 @@ const OrderDetails = ({ navigation, route }) => {
             <View style={styles?.viewtext}>
               <View>
                 <Text style={styles?.ordertext}>Payment Status</Text>
-                <Text style={styles?.normalLeft}>{dashboard?.orderId?.payment_status}</Text>
+                <Text style={styles?.normalLeft}>
+                {dashboard?.orderId?.payment_status}
+                                  </Text>
               </View>
               <View>
                 <Text style={styles?.ordertext}>Delivery Status</Text>

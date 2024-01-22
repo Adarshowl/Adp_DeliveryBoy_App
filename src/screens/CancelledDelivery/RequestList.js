@@ -33,8 +33,8 @@ const RequestList = ({
 
   const datetime = item?.createdAt
   const dateObj = new Date(datetime);
-  const date = dateObj.toISOString().split('T')[0]; 
-  const time = dateObj.toTimeString().split(' ')[0]; 
+  const date = dateObj.toISOString().split('T')[0];
+  const time = dateObj.toTimeString().split(' ')[0];
   const formattedDateTime = `${date} ${time}`;
 
   const theme = useContext(themeContext);
@@ -68,7 +68,7 @@ const RequestList = ({
               flexDirection: 'row',
               justifyContent: 'space-between'
             }}>
-               <Text
+              <Text
                 style={[
                   styles.discountPrice,
                   {
@@ -161,7 +161,7 @@ const RequestList = ({
                     marginTop: 2
                   },
                 ]}>
-                {item?.orderId?.payment_status}
+                {item?.orderId?.payment_mode == "Cod" ? "COD" : item?.orderId?.payment_mode}
               </Text>
 
             </View>

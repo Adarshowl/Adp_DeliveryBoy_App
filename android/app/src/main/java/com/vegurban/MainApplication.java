@@ -1,4 +1,4 @@
-package com.e_ccom_delivery_test;
+package com.adp_e_ccom_delivery_test;
 
 import android.app.Application;
 import com.facebook.react.PackageList;

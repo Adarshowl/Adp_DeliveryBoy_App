@@ -312,7 +312,7 @@ const UpdateBank = ({route}) => {
                     />
                     <VegUrbanEditText
                         // placeholder="Bank account Name"
-                        label="Bank account Number"
+                        label="Bank Account Number"
                         value={accountnumber}
 
                         style={{

@@ -359,8 +359,8 @@ const CreateBank = ({ route }) => {
                         onChangeText={v => setHolderName(v)}
                     />
                     <VegUrbanEditText
-                        placeholder="Enter Bank account Name"
-                        label="Bank account Number"
+                        placeholder="Enter Bank Account Name"
+                        label="Bank Account Number"
                         value={accountnumber}
 
                         maxLength={15}

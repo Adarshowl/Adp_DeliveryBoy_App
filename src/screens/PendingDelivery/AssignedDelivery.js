@@ -376,7 +376,9 @@ const AssignedDelivery = ({ navigation }) => {
                                             marginVertical:3
                                         },
                                     ]}>
-                                    {item?.orderId?.payment_mode}
+                                     {item?.orderId?.payment_mode =="Cod" ? "COD" : item?.orderId?.payment_mode}
+
+                                    {/* {item?.orderId?.payment_mode} */}
                                 </Text>
 
                                 <Text
@@ -668,7 +670,7 @@ const AssignedDelivery = ({ navigation }) => {
 
                     }}
                     ListEmptyComponent={() => !showEmpty ? null : (
-                        <View style={{ alignItems: 'center', justifyContent: 'center', flex: 1 }}>
+                        <View style={{ alignItems: 'center', justifyContent: 'center', }}>
                             <Text style={{
                                 fontSize: 20,
                                 marginTop: 50,
